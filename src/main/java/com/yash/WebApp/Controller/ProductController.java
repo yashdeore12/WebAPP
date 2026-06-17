@@ -1,9 +1,8 @@
 package com.yash.WebApp.Controller;
 
+import com.yash.WebApp.Model.Product;
 import com.yash.WebApp.Service.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ProductController {
@@ -23,5 +22,12 @@ public class ProductController {
     @GetMapping("/products/{prodId}")
     public Object getProductsById(@PathVariable int prodId){
         return productService.getProductsById(prodId);
+    }
+
+
+    @PostMapping("/products")
+    public void addProduct(@RequestBody Product prod){
+        productService.addProduct(prod);
+
     }
 }
