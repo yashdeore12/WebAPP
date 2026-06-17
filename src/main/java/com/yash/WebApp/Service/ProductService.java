@@ -11,11 +11,20 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    List<Product> products = Arrays.asList(new Product(23, 24, "mobile"), new Product(26,12,"cleaner"));
+    List<Product> products = Arrays.asList(new Product(23, 10000, "mobile"), new Product(24,12,"cleaner"));
 
     public List<Product> getproducts() {
         return products;
 
     }
 
+    public Object getProductsById(int prodId) {
+        for (Product p : products) {
+            if (p.getProdId() == prodId) return p;
+
+        }
+        return null;
+
+
+    }
 }
