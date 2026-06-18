@@ -4,6 +4,8 @@ import com.yash.WebApp.Model.Product;
 import com.yash.WebApp.Service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ProductController {
 
@@ -15,12 +17,12 @@ public class ProductController {
 
 
     @GetMapping("/products")
-    public Object getproducts(){
-        return productService.getproducts();
+    public List<Product> getProducts(){
+        return productService.getProducts();
     }
 
     @GetMapping("/products/{prodId}")
-    public Object getProductsById(@PathVariable int prodId){
+    public Product getProductsById(@PathVariable int prodId){
         return productService.getProductsById(prodId);
     }
 
@@ -30,4 +32,13 @@ public class ProductController {
         productService.addProduct(prod);
 
     }
+    @PutMapping("/products")
+    public void updateProduct(@RequestBody Product prod){
+        productService.updateProduct(prod);
+    }
+    @DeleteMapping("/products/{prodId}")
+    public void deleteProduct(@PathVariable int prodId){
+        productService.deleteProduct(prodId);
+    }
+
 }
